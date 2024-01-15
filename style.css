@@ -1,0 +1,24 @@
+body {
+    padding:0;
+    margin:0;
+
+}
+
+.square{
+    background-color: blueviolet;
+    padding:0;
+    margin:0; 
+}
+
+.square:hover{
+    background-color: white;
+}
+#gridContainer {
+    display: flex;
+    width: 960px;
+    height:960px;
+    flex-wrap: wrap;
+    align-content: start;
+    padding:0;
+
+}
