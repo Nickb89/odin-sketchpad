@@ -12,7 +12,8 @@ body {
     width: 960px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 
@@ -20,11 +21,10 @@ body {
     background-color: blueviolet;
     padding:0;
     margin:0; 
+
 }
 
-.square:hover{
-    background-color: white;
-}
+
 
 #gridContainer {
     display: flex;
@@ -38,7 +38,11 @@ body {
 
 }
 
-#promptUser {
+.gridSizeText {
+    font-size: 23px;
+}
+
+#promptUser, #resetGridBtn {
     background-color: white;
     font-size:30px;
     width: 310px;
@@ -46,12 +50,16 @@ body {
 }
 
 @media only screen and (max-width: 900px) {
-    body {
-    background-color: rgb(39, 118, 145);
-    }
+  
 
     #gridContainer{
         width:740px;
         height:740px;
     }
+
+    .header {
+        width: 760px;
+        
+    }
+    
     }

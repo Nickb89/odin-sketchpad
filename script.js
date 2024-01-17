@@ -40,7 +40,7 @@ handleTabletChange(mediaQuery);
 
 
 
-//get button reference
+//get grid size change button reference
 const btn = document.querySelector('#promptUser');
 // add button event listener to create user input prompt
 btn.addEventListener('click', function() {
@@ -49,10 +49,12 @@ let userSquareSizeNum = prompt("How big should each square be?", "16");
   resetGrid(userSquareSize);
 })
 
-
-//load grid with default square size
-//createGrid(userSquareSize);
-
+//get reset grid button reference
+const btnReset = document.querySelector('#resetGridBtn');
+// add button event listener to redraw grid
+btnReset.addEventListener('click', function() {
+    resetGrid(userSquareSize);
+  })
 
 //remove all child elements of container
 function resetGrid(userSquareSizeInput) {
@@ -64,7 +66,6 @@ function resetGrid(userSquareSizeInput) {
 
 
 //create squares 
-
 function createGrid(userInput){
   console.log("user said " + userInput);
 for(i = 0; i < userInput * userInput; i++){
@@ -72,6 +73,17 @@ for(i = 0; i < userInput * userInput; i++){
     singleSquare.setAttribute("class", "square");
     singleSquare.style.width = (((parseFloat(container.style.width))/userInput).toString() + "px");
     singleSquare.style.height = (((parseFloat(container.style.width))/userInput).toString() + "px");
+    singleSquare.style.filter = 'brightness(1.1)';
+    //add event listener to detect when mouse enters - decrease brightness each time.
+    singleSquare.addEventListener('mouseenter', (event) => {
+    let styles = window.getComputedStyle(singleSquare);
+    let brightnessAmt = parseFloat(styles.getPropertyValue('filter').slice(11,14));
+    console.log("Brightess amount is " + brightnessAmt);
+    let newbrightness = brightnessAmt - 0.1;
+    console.log("new brightness amount is " + newbrightness);
+    singleSquare.style.filter = `brightness(${newbrightness})`;
+    
+    })
     container.appendChild(singleSquare);
     gridSizeText.textContent = "Current Grid Size is " + userInput;
   
